@@ -61,7 +61,7 @@ const List = ({ data = [], info = null, type = 'stand virtual', title="", descri
             display: grid;
             grid-column-gap: 24px;
             grid-row-gap: 24px;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
             margin-bottom: 10rem;
           }
           @media only screen and (max-width: 1200px)  {
