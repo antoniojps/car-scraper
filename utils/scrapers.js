@@ -87,8 +87,8 @@ export async function getAutoSapo({ page = 1 }) {
   }
 }
 
-export async function getCustoJusto({ page = 1, model = 'bmw'}) {
-  const link = `https://www.custojusto.pt/portugal/carros-usados/${model}?br=3pe=9&ps=2&si=0&st=a&o=${page}`
+export async function getCustoJusto({ page = 1, model = 'bmw' }) {
+  const link = `https://www.custojusto.pt/portugal/carros-usados/${model}?br=6&pe=9&ps=2&si=0&st=a&o=${page}`
   try {
   // get html from page
   const { data: html } = await axios.get(link)
