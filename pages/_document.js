@@ -1,45 +1,26 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import { CSSBaseline } from '@zeit-ui/react'
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const sheet = new ServerStyleSheet();
-    const originalRenderPage = ctx.renderPage;
+  static async getInitialProps (ctx) {
+    const initialProps = await Document.getInitialProps(ctx)
+    const styles = CSSBaseline.flush()
 
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
-        });
-
-      const initialProps = await Document.getInitialProps(ctx);
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        ),
-      };
-    } finally {
-      sheet.seal();
+    return {
+      ...initialProps,
+      styles: (
+        <>
+          {initialProps.styles}
+          {styles}
+        </>
+      ),
     }
   }
 
   render() {
     return (
       <Html>
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          <link
-            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

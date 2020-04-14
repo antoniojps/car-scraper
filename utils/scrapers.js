@@ -29,12 +29,15 @@ export async function getStandVirtual({ page = 1 }) {
         link,
         img: imgClean,
         price: convertStringToNumber(price),
+        provider: 'stand virtual',
     }
   }).get()
   return {
-    pagination: {
+    info: {
       currentPage: page,
       totalPages,
+      link,
+      provider: 'stand virtual',
     },
     list: data,
   }
@@ -67,12 +70,15 @@ export async function getAutoSapo({ page = 1 }) {
         link: url,
         img: imgSrc,
         price: convertStringToNumber(price),
+        provider: 'autosapo',
     }
   }).get()
   return {
-    pagination: {
+    info: {
       currentPage: page,
       totalPages,
+      link,
+      provider: 'autosapo',
     },
     list: data,
   }
@@ -107,6 +113,7 @@ export async function getCustoJusto({ page = 1, model = 'bmw'}) {
         link,
         img,
         price: convertStringToNumber(price),
+        provider: 'custo justo',
     }
   }).get()
     const cleanData = data.reduce(
@@ -118,9 +125,11 @@ export async function getCustoJusto({ page = 1, model = 'bmw'}) {
     )
 
   return {
-    pagination: {
+    info: {
       currentPage: page,
       totalPages,
+      link,
+      provider: 'custo justo',
     },
     list: cleanData,
   }
@@ -152,12 +161,15 @@ export async function getOlx({ page = 1, model = "bmw" }) {
         link,
         img,
         price: convertStringToNumber(price),
+        provider: 'olx',
     }
   }).get()
   return {
-    pagination: {
+    info: {
       currentPage: page,
       totalPages,
+      link,
+      provider: 'olx',
     },
     list: data,
   }

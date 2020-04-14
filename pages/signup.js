@@ -6,10 +6,9 @@ import { useMutation } from '@apollo/react-hooks';
 import Field from '../components/field';
 import { getErrorMessage } from '../utils/form';
 import { useRouter } from 'next/router';
-import { Container, Row } from 'styled-bootstrap-grid';
 
 const SignUpMutation = gql`
-  mutation SignUpMutation($email: String!, $password: String!) {
+  mutation SignUpMutatiosn($email: String!, $password: String!) {
     signUp(input: { email: $email, password: $password }) {
       _id
       email
@@ -42,34 +41,30 @@ function SignUp() {
   }
 
   return (
-    <Container>
-      <Row>
-        <h1>Sign Up</h1>
-      </Row>
-      <Row>
-        <form onSubmit={handleSubmit}>
-          {errorMsg && <p>{errorMsg}</p>}
-          <Field
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            label="Email"
-          />
-          <Field
-            name="password"
-            type="password"
-            autoComplete="password"
-            required
-            label="Password"
-          />
-          <button type="submit">Sign up</button> or{' '}
-          <Link href="signin">
-            <a>Sign in</a>
-          </Link>
-        </form>
-      </Row>
-    </Container>
+    <div>
+      <h1>Sign Up</h1>
+      <form onSubmit={handleSubmit}>
+        {errorMsg && <p>{errorMsg}</p>}
+        <Field
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          label="Email"
+        />
+        <Field
+          name="password"
+          type="password"
+          autoComplete="password"
+          required
+          label="Password"
+        />
+        <button type="submit">Sign up</button> or{' '}
+        <Link href="signin">
+          <a>Sign in</a>
+        </Link>
+      </form>
+    </div>
   );
 }
 
