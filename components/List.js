@@ -55,6 +55,7 @@ const List = ({ data = [], info = null, type = 'stand virtual', title="", descri
           display: flex;
           align-items: center;
           justify-content: space-between;
+          flex-direction: column;
         }
         .list {
             display: grid;
