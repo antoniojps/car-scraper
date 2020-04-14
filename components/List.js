@@ -8,13 +8,16 @@ export const types = {
   'autosapo': 'secondary',
 }
 
-const List = ({ data, type = 'stand virtual', title="", description = null }) => {
+const List = ({ data = [], info = null, type = 'stand virtual', title="", description = null }) => {
   return (
     <div className="wrapper">
       <div className="top">
         <Tag invert type={types[type]}><h3>{title}</h3></Tag>
         {description && (
-          <p>{description}</p>
+          <p>
+            {description}
+            {info && info.link && <a href={info.link} rel="noreferrer noopener" target="_blank"> ver todos</a>}
+          </p>
         )}
       </div>
       <Spacer y={1} />
