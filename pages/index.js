@@ -92,8 +92,6 @@ const Index = () => {
           olxBmwData && olxBmwData.olx
           && <List data={olxBmwData.olx.list} info={olxBmwData.olx.info} type="olx" title="Olx" description="bmw entre €1000 e €8000" />
         }
-      )}
-
       <style jsx>{`
         .tags {
           display: flex;
